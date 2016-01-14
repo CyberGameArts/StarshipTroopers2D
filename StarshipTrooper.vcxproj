@@ -12,6 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SSTrooper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SSTrooper.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A7809AB6-ACE4-4F61-87C9-A359F554D7CD}</ProjectGuid>

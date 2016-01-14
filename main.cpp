@@ -1,10 +1,20 @@
-#include "SDL.h"
-#include "SDL_image.h"
 #include <iostream>
 
+//SDL headers
+#include "SDL.h"
+#include "SDL_image.h"
+
+//custom headers
+#include "SSTrooper.h"
+
+
 using namespace std;
+
+
 int main(int argc, char* args[])
 {
+
+
 	//Initializes SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
@@ -16,6 +26,10 @@ int main(int argc, char* args[])
 	SDL_Surface *windowSurface = nullptr;
 	windowSurface = SDL_GetWindowSurface(window);
 
+	SDL_Rect SST_Rect;
+	SST_Rect.x = 100;
+	SST_Rect.y = 120;
+
 
 	// Initializations 
 	//---------------------------------------------------------------------------------------------------------------
@@ -25,23 +39,25 @@ int main(int argc, char* args[])
 
 
 
-
-	SDL_Surface *SSTrooper_surface = IMG_Load("SSTrooperImage.png");
+	SDL_Surface *SSTrooper_surface = IMG_Load("SSTrooperImage.png"); // Loads SSTrooperImage.png 
 	SDL_Surface *Bug_surface = nullptr;
 
-
+	
 
 	bool GameisRunning = true; //simple boolean which denotes the on or off state of the Game
-	SDL_Event sdl_event; // creates SDL event from general event structure:  typedef union{ Uint8 type; SDL_ActiveEvent active; SDL_KeyboardEvent key; SDL_MouseMotionEvent motion; SDL_MouseButtonEvent button; SDL_JoyAxisEvent jaxis;SDL_JoyBallEvent jball;SDL_JoyHatEvent jhat; SDL_JoyButtonEvent jbutton; SDL_ResizeEvent resize;SDL_ExposeEvent expose;SDL_QuitEvent quit;SDL_UserEvent user;SDL_SysWMEvent syswm;} SDL_Event;
+	SDL_Event event; // creates SDL event from general event structure:  typedef union{ Uint8 type; SDL_ActiveEvent active; SDL_KeyboardEvent key; SDL_MouseMotionEvent motion; SDL_MouseButtonEvent button; SDL_JoyAxisEvent jaxis;SDL_JoyBallEvent jball;SDL_JoyHatEvent jhat; SDL_JoyButtonEvent jbutton; SDL_ResizeEvent resize;SDL_ExposeEvent expose;SDL_QuitEvent quit;SDL_UserEvent user;SDL_SysWMEvent syswm;} SDL_Event;
 
 
 	/**************main game loop*******************/
 	while (GameisRunning == true)
 	{
-		while (SDL_PollEvent(&sdl_event) != 0) // Checks if the eventqueue is empty SDL_PollEvent returns 1 if there is a pending Event and 0 if there are no events pending
+		while (SDL_PollEvent(&event) != 0) // Checks if the eventqueue is empty SDL_PollEvent returns 1 if there is a pending Event and 0 if there are no events pending
 		{
 
-			if (sdl_event.type == SDL_QUIT)
+
+
+
+			if (event.type == SDL_QUIT)
 				GameisRunning = false;
 
 		}
@@ -50,7 +66,7 @@ int main(int argc, char* args[])
 		SDL_UpdateWindowSurface(window); //Update Windows Surface
 	}
 
-	SDL_FreeSurface(SSTrooper_surface);
+	
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 
