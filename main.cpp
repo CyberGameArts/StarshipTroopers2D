@@ -27,8 +27,8 @@ int main(int argc, char* args[])
 	windowSurface = SDL_GetWindowSurface(window);
 
 	SDL_Rect SST_Rect;
-	SST_Rect.x = 100;
-	SST_Rect.y = 120;
+	SST_Rect.x = 128;
+	SST_Rect.y = 128;
 
 
 	// Initializations 
@@ -51,22 +51,37 @@ int main(int argc, char* args[])
 	/**************main game loop*******************/
 	while (GameisRunning == true)
 	{
+
+
 		while (SDL_PollEvent(&event) != 0) // Checks if the eventqueue is empty SDL_PollEvent returns 1 if there is a pending Event and 0 if there are no events pending
 		{
+			SDL_FillRect(windowSurface, NULL, 0x000000);
+			SDL_BlitSurface(SSTrooper_surface, NULL, windowSurface, &SST_Rect);
+			
 
+			if (event.type == SDL_KEYDOWN)
+			{
+				//Adjust the velocity
+				switch (event.key.keysym.sym)
+				{
+					case SDLK_UP: SST_Rect.y = SST_Rect.y - 10; break;
+					case SDLK_DOWN: SST_Rect.y = SST_Rect.y + 10; break;
+					case SDLK_LEFT: SST_Rect.x = SST_Rect.x - 10; break;
+					case SDLK_RIGHT: SST_Rect.x = SST_Rect.x + 10; break;
+				}
 
-
+			}
 
 			if (event.type == SDL_QUIT)
 				GameisRunning = false;
 
 		}
 
-		SDL_BlitSurface(SSTrooper_surface, NULL, windowSurface, NULL);
+		
 		SDL_UpdateWindowSurface(window); //Update Windows Surface
 	}
 
-	
+	SDL_FreeSurface(SSTrooper_surface);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 

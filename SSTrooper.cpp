@@ -32,16 +32,4 @@ void SSTrooper::handle_input()
 
 	}
 
-	//If a key was released
-	else if (event.type == SDL_KEYUP)
-	{
-		//Adjust the velocity
-		switch (event.key.keysym.sym)
-		{
-		case SDLK_UP: yVel += 2; break;
-		case SDLK_DOWN: yVel -= 2; break;
-		case SDLK_LEFT: xVel += 2; break;
-		case SDLK_RIGHT: xVel -= 2; break;
-		}
-	}
 }
