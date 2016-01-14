@@ -11,7 +11,10 @@ public:
 	void move(); // moves the Trooper
 	void show(); 
 
+
 private:
+
+	
 	int x, y; // (X,Y) Position
 
 	int xVel, yVel; // (X,Y) Velocity
