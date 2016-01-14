@@ -46,7 +46,6 @@ build/
 *.log
 *.scc
 
-
 # Visual C++ cache files
 ipch/
 *.aps
@@ -155,7 +154,6 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
-
 
 
 *.vcxproj
