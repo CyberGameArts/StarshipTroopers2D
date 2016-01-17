@@ -6,7 +6,7 @@
 
 using namespace std;
 
-SDLinit::SDLinit(){
+SDLinit::SDLinit(int driverID, int rendererFlag){
 
 	SDL_Init(SDL_INIT_EVERYTHING);
 	int status = SDL_Init(SDL_INIT_EVERYTHING);
@@ -15,11 +15,14 @@ SDLinit::SDLinit(){
 	if (status == 0)
 	{
 		//Creates SDL window and returns the window that was created or NULL on failure. 
-		window = SDL_CreateWindow("Starship Troopers 2D", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
+		window = SDL_CreateWindow("Starship Troopers 2D", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
 		if (window)
 		{
-			windowSurface = SDL_GetWindowSurface(window);
+			renderer = SDL_CreateRenderer(window, driverID, rendererFlag);
+
+			//windowSurface = SDL_GetWindowSurface(window);
+
 		}
 		else{
 			cout << "ERROR: Could not load Window" << SDL_GetError() << endl;
@@ -38,5 +41,8 @@ SDLinit::SDLinit(){
 	
 
 }
+
+
+
 
 

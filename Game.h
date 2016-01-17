@@ -2,12 +2,13 @@
 #define GAME_H
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDLinit.h"
 
 
 class Game{
 
 public:
-	Game();
+	Game(SDLinit *SDL_Init);
 private:
 
 };
