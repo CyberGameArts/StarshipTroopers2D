@@ -5,13 +5,13 @@
 #include "Game.h"
 
 
-Game::Game(SDLinit *SDL_Init){
+Game::Game(SDLinit *sdl){
 
 	bool GameisRunning = true;
 	SDL_Event event;
 	
 	GameObject trooper(10, 10);
-	trooper.setObjImage(SDL_Init->renderer, "StarshipTrooper_2.png");
+	trooper.setObjImage(sdl->renderer, "StarshipTrooper_2.png");
 	
 
 	while (GameisRunning == true)
@@ -20,9 +20,9 @@ Game::Game(SDLinit *SDL_Init){
 		{
 
 			
-			trooper.drawObjImage(SDL_Init->renderer, trooper.getObjImage(), NULL, &trooper.setobjBoundingBox(0, 0, 128, 256));
+			trooper.drawObjImage(sdl->renderer, trooper.getObjImage(), NULL, &trooper.setobjBoundingBox(0, 0, 128, 256));
 
-			SDL_RenderPresent(SDL_Init->renderer);
+			SDL_RenderPresent(sdl->renderer);
 
 			if (event.type == SDL_QUIT)
 				GameisRunning = false;

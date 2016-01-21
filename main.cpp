@@ -15,11 +15,11 @@ using namespace std;
 
 int main(int argc, char* args[])
 {
-	SDLinit SDL_Init;
-	Game StarshipTroopers2D(&SDL_Init);
+	SDLinit sdl;
+	Game StarshipTroopers2D(&sdl);
 
-	SDL_DestroyRenderer(SDL_Init.renderer);
-	SDL_DestroyWindow(SDL_Init.window);
+	SDL_DestroyRenderer(sdl.renderer);
+	SDL_DestroyWindow(sdl.window);
 
 
 	IMG_Quit();
